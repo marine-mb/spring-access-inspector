@@ -1,21 +1,26 @@
 package com.theodo.tools.preauthorize.analyzer;
 
-import com.theodo.tools.preauthorize.analyzer.impl.PreAuthorizeAnnotationProcessing;
-import com.theodo.tools.preauthorize.analyzer.impl.ast.ASTReader;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.core.config.Configurator;
-import picocli.CommandLine;
-import spoon.reflect.CtModel;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.stream.Stream;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.config.Configurator;
+
+import com.theodo.tools.preauthorize.analyzer.impl.PreAuthorizeAnnotationProcessing;
+import com.theodo.tools.preauthorize.analyzer.impl.ast.ASTReader;
+import com.theodo.tools.preauthorize.analyzer.impl.utils.AnnotationsDto;
+
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import picocli.CommandLine;
+import spoon.reflect.CtModel;
 
 @Slf4j
 public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent {
@@ -35,34 +40,46 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
     @Override
     public Integer call() throws Exception {
         try (Stream<File> walk = findPoms(projectDirectory)) { // For all maven projects found in directory
+            List<AnnotationsDto> annotations = new ArrayList<>();
             walk.forEach(pomFile -> {
-                CtModel astModel = ASTReader.readAst(pomFile); // Analyse JAVA AST
-                PreAuthorizeAnnotationProcessing.visitAllAnnotations(astModel, this);
-            });
-        }
+                CtModel astModel = ASTReader.readAst(pomFile); // Analyze JAVA AST
+                List<AnnotationsDto> temporaryAnnotation = PreAuthorizeAnnotationProcessing
+                        .visitAllAnnotations(astModel, this);
+                annotations.addAll(temporaryAnnotation);
 
-        if (errorCount > 0) {
-            log.error("❌ Found {} erroneous security(s) in project(s)", errorCount);
-            return 1; // ERROR
+            });
+            displayTable(annotations);
         }
         return 0;
     }
 
+    public static void displayTable(List<AnnotationsDto> annotations) {
+        // Print the table headers
+        System.out.println("Endpoint\t\t| Method\t\t| PreAuthorize");
+
+        // Iterate over the ArrayList and print each person's data
+        for (AnnotationsDto annotation : annotations) {
+            System.out
+                    .println(annotation.endpoint() + "\t\t| " + annotation.method() + "\t\t| "
+                            + annotation.preAuthorize());
+        }
+    }
+
     public static Stream<File> findPoms(String basePath) throws IOException {
-        //noinspection resource
+        // noinspection resource
         return Files.walk(Paths.get(basePath))
                 .filter(path -> path.getFileName().toString().contains("pom.xml"))
                 .map(Path::toFile);
     }
 
     @Override
-    public void foundOkAnnotation(String content, String sourceLocation) {
-        log.info("\t\tFound PreAuthorize '{}' at {}", content, sourceLocation);
+    public void foundOkAnnotation(String content) {
+        log.info("🔍 Found PreAuthorize '{}'", content);
     }
 
     @Override
     public void foundErroneousAnnotation(String sourceLocation) {
-        log.error("\t\t❌ Erroneous security at '{}'", sourceLocation);
+        log.error("\n\t❌ Erroneous security at '{}'", sourceLocation);
         errorCount++;
     }
 }

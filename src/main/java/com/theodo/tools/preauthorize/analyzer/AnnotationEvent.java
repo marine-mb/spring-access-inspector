@@ -1,6 +1,7 @@
 package com.theodo.tools.preauthorize.analyzer;
 
 public interface AnnotationEvent {
-    void foundOkAnnotation(String content, String sourceLocation);
+    void foundOkAnnotation(String content);
+
     void foundErroneousAnnotation(String sourceLocation);
 }
