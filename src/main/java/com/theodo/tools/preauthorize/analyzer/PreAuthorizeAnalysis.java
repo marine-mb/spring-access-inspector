@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import org.apache.logging.log4j.Level;
@@ -54,15 +55,35 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
     }
 
     public static void displayTable(List<AnnotationsDto> annotations) {
-        // Print the table headers
-        System.out.println("Endpoint\t\t| Method\t\t| PreAuthorize");
+        // ANSI escape sequences for colors and formatting
+        String reset = "\u001B[0m";
+        String bold = "\u001B[1m";
+        String cyan = "\u001B[36m";
+        String yellow = "\u001B[33m";
+
+        // Calculate the maximum width for each column
+        int maxEndpointWidth = getMaxColumnWidth(annotations, AnnotationsDto::endpoint);
+        int maxMethodWidth = getMaxColumnWidth(annotations, AnnotationsDto::method);
+        int offset = 7;
+
+        // Print the table headers with colors and formatting
+        System.out.println("\n\n" + bold + "#######################");
+        System.out.printf("%-" + (maxEndpointWidth + offset) + "s| %-" + (maxMethodWidth + offset) + "s| %s%s\n",
+                "Endpoint", "Method", "PreAuthorize", reset);
 
         // Iterate over the ArrayList and print each person's data
         for (AnnotationsDto annotation : annotations) {
-            System.out
-                    .println(annotation.endpoint() + "\t\t| " + annotation.method() + "\t\t| "
-                            + annotation.preAuthorize());
+            System.out.printf("%-" + (maxEndpointWidth + offset) + "s| %-" + (maxMethodWidth + offset) + "s| %s%s\n",
+                    cyan + annotation.endpoint(), annotation.method(), yellow + annotation.preAuthorize(), reset);
         }
+    }
+
+    private static int getMaxColumnWidth(List<AnnotationsDto> annotations,
+            Function<AnnotationsDto, String> columnExtractor) {
+        return annotations.stream()
+                .mapToInt(annotation -> columnExtractor.apply(annotation).length())
+                .max()
+                .orElse(0);
     }
 
     public static Stream<File> findPoms(String basePath) throws IOException {
