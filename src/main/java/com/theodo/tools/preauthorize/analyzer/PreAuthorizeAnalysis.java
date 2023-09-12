@@ -32,7 +32,7 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
     private int errorCount = 0;
 
     public static void main(String[] args) {
-        Configurator.setLevel("com.theodo.tools", Level.INFO);
+        Configurator.setLevel("com.theodo.tools", Level.ERROR);
         PreAuthorizeAnalysis analyzer = new PreAuthorizeAnalysis();
         int exitCode = new CommandLine(analyzer).execute(args);
         log.info("Process ended with exit code: {}", exitCode);
