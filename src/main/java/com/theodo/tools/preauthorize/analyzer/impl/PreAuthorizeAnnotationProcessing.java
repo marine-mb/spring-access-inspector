@@ -17,6 +17,9 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.visitor.Filter;
+import spoon.reflect.visitor.filter.CompositeFilter;
+import spoon.reflect.visitor.filter.FilteringOperator;
 import spoon.reflect.visitor.filter.TypeFilter;
 
 @Slf4j
@@ -69,8 +72,13 @@ public class PreAuthorizeAnnotationProcessing {
         List<CtAnnotation<?>> annotations = ctMethod.getElements(new TypeFilter<>(CtAnnotation.class)); // annotations
                                                                                                         // found on
                                                                                                         // methods
-        annotations.addAll(ctClass.getElements(new TypeFilter<>(CtAnnotation.class))); // annotations found on class
+        annotations.addAll(ctClass.getElements(getFilter())); // annotations found on class
         return addPreAuthorizedAnnotations(annotations);
+    }
+
+    private static Filter<CtAnnotation<?>> getFilter() {
+        return new CompositeFilter<>(FilteringOperator.INTERSECTION, new TypeFilter<>(CtAnnotation.class),
+                annotation -> annotation.getParent(CtMethod.class) == null);
     }
 
     private static List<CtAnnotation<?>> addPreAuthorizedAnnotations(List<CtAnnotation<?>> annotations) {
