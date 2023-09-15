@@ -1,15 +1,17 @@
 package com.theodo.tools.preauthorize.analyzer;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.function.Function;
 import java.util.stream.Stream;
+import java.lang.annotation.Annotation;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
@@ -49,41 +51,37 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
                 annotations.addAll(temporaryAnnotation);
 
             });
-            displayTable(annotations);
+            generateHtmlTable(annotations);
         }
         return 0;
     }
 
-    public static void displayTable(List<AnnotationsDto> annotations) {
-        // ANSI escape sequences for colors and formatting
-        String reset = "\u001B[0m";
-        String bold = "\u001B[1m";
-        String cyan = "\u001B[36m";
-        String yellow = "\u001B[33m";
+    public static void generateHtmlTable(List<AnnotationsDto> annotations) {
+        // Generate the HTML table
+        StringBuilder htmlTable = new StringBuilder();
+        htmlTable.append("\n<head>\n<style>\n")
+                .append("table {\nborder-collapse: collapse;\nwidth:100%;\n}\n")
+                .append("th, td {\npadding: 8px;\ntext-align: left;\nborder-bottom: 1px solid #ddd;\n}\n")
+                .append("th {\nbackground-color: #f2f2f2;\n}\n")
+                .append("</style>\n</head>\n<body>\n")
+                .append("<table>\n<tr {}>\n<th>Endpoint</th>\n<th>Method</th>\n<th>PreAuthorize</th>\n</tr>\n");
 
-        // Calculate the maximum width for each column
-        int maxEndpointWidth = getMaxColumnWidth(annotations, AnnotationsDto::endpoint);
-        int maxMethodWidth = getMaxColumnWidth(annotations, AnnotationsDto::method);
-        int offset = 7;
-
-        // Print the table headers with colors and formatting
-        System.out.println("\n\n" + bold + "#######################");
-        System.out.printf("%-" + (maxEndpointWidth + offset) + "s| %-" + (maxMethodWidth + offset) + "s| %s%s\n",
-                "Endpoint", "Method", "PreAuthorize", reset);
-
-        // Iterate over the ArrayList and print each person's data
+        // Iterate over the list and generate each row of the table
         for (AnnotationsDto annotation : annotations) {
-            System.out.printf("%-" + (maxEndpointWidth + offset) + "s| %-" + (maxMethodWidth + offset) + "s| %s%s\n",
-                    cyan + annotation.endpoint(), annotation.method(), yellow + annotation.preAuthorize(), reset);
+            htmlTable.append("<tr>\n<td>").append(annotation.endpoint()).append("</td>\n")
+                    .append("<td>").append(annotation.method().replace("Mapping", "")).append("</td>\n")
+                    .append("<td>").append(annotation.preAuthorize()).append("</td>\n</tr>\n");
         }
-    }
 
-    private static int getMaxColumnWidth(List<AnnotationsDto> annotations,
-            Function<AnnotationsDto, String> columnExtractor) {
-        return annotations.stream()
-                .mapToInt(annotation -> columnExtractor.apply(annotation).length())
-                .max()
-                .orElse(0);
+        // Close the HTML table and body
+        htmlTable.append("</table>\n</body>\n</html>");
+
+        // Write the HTML table to a file
+        try (PrintWriter writer = new PrintWriter("table.html")) {
+            writer.println(htmlTable);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Stream<File> findPoms(String basePath) throws IOException {
