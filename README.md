@@ -1,14 +1,28 @@
-How to build: 
+## What is spring-access-control ?
 
-```mvn clean install``` in project directory
+This tool creates a table report to verify access control on Spring Boot routes.
+It uses the [`Preauthorize`](https://www.baeldung.com/spring-security-method-security) annotation from `spring-security-config`
 
-How to run (using maven exec plugin):
+It creates a table.html file with a list of your routes and their preauthorize.
 
-```mvn exec:java -Dexec.mainClass=com.theodo.tools.preauthorize.analyzer.PreAuthorizeAnalysis  -Dexec.args="/the_path/where/poms/are"```
+![List of your routes with preauthorize annotation](preauthorize-table.png)
 
-How to run (using java):
-```
-mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
-export CLASSPATH=`cat classpath.txt`
-java -cp java -cp $CLASSPATH:./target/preauthorize-analysis-1.0.0.jar com.theodo.tools.preauthorize.analyzer.PreAuthorizeAnalysis /the_path/where/poms/are"
-````
+## How to use it
+
+Clone the repository:
+`git clone git@github.com:marine-mb/spring-access-inspector.git`
+
+Go inside the repo:
+`cd spring-access-inspector`
+
+Compile the code:
+
+`mvn compile exec:java -Dexec.mainClass=com.theodo.tools.preauthorize.analyzer.PreAuthorizeAnalysis`
+
+Run the code (using maven exec plugin) and give it your pom path:
+
+`mvn exec:java -Dexec.mainClass=com.theodo.tools.preauthorize.analyzer.PreAuthorizeAnalysis  -Dexec.args="/the_path/where/poms/are"`
+
+N.B: Compile your code before:
+
+`mvn clean install -DskipTests`
