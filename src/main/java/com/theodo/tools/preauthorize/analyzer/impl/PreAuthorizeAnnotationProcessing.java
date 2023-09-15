@@ -29,11 +29,13 @@ public class PreAuthorizeAnnotationProcessing {
 
         ControllerEndpointDiscovery.analyzeControllers(astModel.getRootPackage(),
                 (ctClass, ctMethod, verb, path) -> {
+
                     String preAuthorize = analyzePreAuthorize(ctClass, ctMethod, annotationEvent);
                     AnnotationsDto annotation = new AnnotationsDto(path, verb, preAuthorize);
                     annotations.add(annotation);
 
-                    log.info("\n\n\n🪴 Found '{}' endpoint '{}' in method '{}' in class '{}' at {}.\nPreAuthorize: {}",
+                    log.info(
+                            "\n\n\n🪴 Found '{}' endpoint '{}' in method '{}' in class '{}' at {}.\nPreAuthorize: {}\n",
                             verb, path,
                             ctMethod.getSimpleName(),
                             ctClass.getSimpleName(),
@@ -48,16 +50,13 @@ public class PreAuthorizeAnnotationProcessing {
             AnnotationEvent annotationEvent) {
         List<CtAnnotation<? extends Annotation>> ctPreAuthorizeAnnotations = getPreAuthorizeAnnotations(ctClass,
                 ctMethod);
-        String noPreauthorizeMessage = "🚨🚨🚨 No Preauthorize annotation found 🚨🚨🚨";
-        String preAuthorizeAnnotation = noPreauthorizeMessage;
+        String preAuthorizeAnnotation = "🚨 No PreAuthorize annotation found";
 
         if (ctPreAuthorizeAnnotations.isEmpty()) {
-            log.warn(noPreauthorizeMessage);
             annotationEvent.foundErroneousAnnotation(SourceLocation.getSourceLocation(ctMethod));
         } else {
             CtAnnotation<? extends Annotation> ctAnnotation = ctPreAuthorizeAnnotations.get(0);
             if (ctAnnotation.getValues().isEmpty()) {
-                log.warn("🚨 No Preauthorize annotation found");
                 annotationEvent.foundErroneousAnnotation(SourceLocation.getSourceLocation(ctMethod));
             } else {
                 CtExpression<?> preAuthorizeSPEL = ctAnnotation.getValue("value");

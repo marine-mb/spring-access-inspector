@@ -34,7 +34,7 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
     private int errorCount = 0;
 
     public static void main(String[] args) {
-        Configurator.setLevel("com.theodo.tools", Level.ERROR);
+        Configurator.setLevel("com.theodo.tools", Level.INFO);
         PreAuthorizeAnalysis analyzer = new PreAuthorizeAnalysis();
         int exitCode = new CommandLine(analyzer).execute(args);
         log.info("Process ended with exit code: {}", exitCode);
@@ -92,13 +92,7 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
     }
 
     @Override
-    public void foundOkAnnotation(String content) {
-        log.info("🔍 Found PreAuthorize '{}'", content);
-    }
-
-    @Override
     public void foundErroneousAnnotation(String sourceLocation) {
-        log.error("\n\t❌ Erroneous security at '{}'", sourceLocation);
         errorCount++;
     }
 }
