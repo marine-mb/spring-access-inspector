@@ -16,4 +16,5 @@
 .envrc
 .kubeconfig
 .aws/credentials
+.vscode/*
 target
