@@ -102,8 +102,16 @@ public class PreAuthorizeAnnotationProcessing {
     }
 
     private static boolean isPreAuthorizeAnnotation(CtTypeReference<? extends Annotation> annotationType) {
-        return annotationType.getQualifiedName().contains("PreAuthorize") &&
+        boolean containsPreAuthorize = annotationType.getQualifiedName().contains("PreAuthorize") &&
                 annotationType.getQualifiedName().contains("org.springframework.security");
+        boolean containsSecured = annotationType.getQualifiedName().contains("Secured") &&
+                annotationType.getQualifiedName().contains("org.springframework.security");
+        // RolesAllowed is in javax.annotation.security or jakarta.annotation.security
+        // depending on the version of SpringBoot
+        boolean containsRolesAllowed = annotationType.getQualifiedName().contains("RolesAllowed") &&
+                (annotationType.getQualifiedName().contains("javax.annotation.security") ||
+                        annotationType.getQualifiedName().contains("jakarta.annotation.security"));
+        return containsPreAuthorize || containsSecured || containsRolesAllowed;
     }
 
 }
