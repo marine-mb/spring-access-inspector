@@ -1,7 +1,7 @@
 ## What is spring-access-control ?
 
 This tool creates a table report to verify access control on Spring Boot routes.
-It uses the [`Preauthorize`](https://www.baeldung.com/spring-security-method-security) annotation from `spring-security-config`
+It uses the [`Preauthorize`, `Secured` or `RolesAllowed`](https://www.baeldung.com/spring-security-method-security) annotation from `spring-security-config`
 
 It creates a table.html file with a list of your routes and their preauthorize.
 
