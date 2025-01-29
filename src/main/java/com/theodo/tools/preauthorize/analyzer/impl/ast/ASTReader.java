@@ -1,10 +1,10 @@
 package com.theodo.tools.preauthorize.analyzer.impl.ast;
 
+import java.io.File;
+
 import lombok.extern.slf4j.Slf4j;
 import spoon.MavenLauncher;
 import spoon.reflect.CtModel;
-
-import java.io.File;
 
 @Slf4j
 public class ASTReader {
