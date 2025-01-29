@@ -12,11 +12,11 @@
     <description>Use Spoon AST analysis to discover and analyse @PreAuthorize annotations</description>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
-        <spoon.version>10.3.0-beta-14</spoon.version> <!-- See release value at http://spoon.gforge.inria.fr/ -->
-        <lombok.version>1.18.24</lombok.version>
+        <spoon.version>11.2.0</spoon.version> <!-- See release value at http://spoon.gforge.inria.fr/ -->
+        <lombok.version>1.18.34</lombok.version>
         <picoli.version>4.7.1</picoli.version>
     </properties>
 

@@ -14,6 +14,7 @@ public class ASTReader {
             MavenLauncher launcher = new MavenLauncher(pomFile.toString(), MavenLauncher.SOURCE_TYPE.ALL_SOURCE, true);
             launcher.getEnvironment().setNoClasspath(true);
             launcher.getEnvironment().setIgnoreDuplicateDeclarations(true);
+            launcher.getEnvironment().setComplianceLevel(21);
             return launcher.buildModel();
         } finally {
             log.info("🌱 Module has been read and Analyzed");
