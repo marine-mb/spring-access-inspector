@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" targetNamespace="http://ws.services.ws.todo.acme.fr/" xmlns:swaRef="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:tns="http://ws.services.ws.todo.acme.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+  <xs:import namespace="http://ws-i.org/profiles/basic/1.1/xsd" schemaLocation="swaref.xsd"/>
+  <xs:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="xmlmime.xsd"/>
+  <xs:element name="ArgumentExceptionFault" type="tns:ConventionArgumentException"/>
+  <xs:element name="ConventionAuthException" type="tns:ConventionAuthException"/>
+  <xs:element name="ConventionTechnicalException" type="tns:ConventionTechnicalException"/>
+  <xs:element name="consulterBonificationDossierCommercialParReferences" type="tns:consulterBonificationDossierCommercialParReferences"/>
+  <xs:element name="consulterBonificationDossierCommercialParReferencesResponse" type="tns:consulterBonificationDossierCommercialParReferencesResponse"/>
+  <xs:element name="consulterSousFondsParReferences" type="tns:consulterSousFondsParReferences"/>
+  <xs:element name="consulterSousFondsParReferencesResponse" type="tns:consulterSousFondsParReferencesResponse"/>
+  <xs:element name="consulterTiersSousFondsParReference" type="tns:consulterTiersSousFondsParReference"/>
+  <xs:element name="consulterTiersSousFondsParReferenceResponse" type="tns:consulterTiersSousFondsParReferenceResponse"/>
+  <xs:element name="consulterVisasSousFondsParReference" type="tns:consulterVisasSousFondsParReference"/>
+  <xs:element name="consulterVisasSousFondsParReferenceResponse" type="tns:consulterVisasSousFondsParReferenceResponse"/>
+  <xs:element name="demanderAutorisationAdossementSousFonds" type="tns:demanderAutorisationAdossementSousFonds"/>
+  <xs:element name="demanderAutorisationAdossementSousFondsResponse" type="tns:demanderAutorisationAdossementSousFondsResponse"/>
+  <xs:element name="enregisterAnnulationAugmentationAide" type="tns:enregisterAnnulationAugmentationAide"/>
+  <xs:element name="enregisterAnnulationAugmentationAideResponse" type="tns:enregisterAnnulationAugmentationAideResponse"/>
+  <xs:element name="enregisterAnnulationDiminutionAide" type="tns:enregisterAnnulationDiminutionAide"/>
+  <xs:element name="enregisterAnnulationDiminutionAideResponse" type="tns:enregisterAnnulationDiminutionAideResponse"/>
+  <xs:element name="enregisterAugmentationAide" type="tns:enregisterAugmentationAide"/>
+  <xs:element name="enregisterAugmentationAideResponse" type="tns:enregisterAugmentationAideResponse"/>
+  <xs:element name="enregisterDiminutionAide" type="tns:enregisterDiminutionAide"/>
+  <xs:element name="enregisterDiminutionAideResponse" type="tns:enregisterDiminutionAideResponse"/>
+  <xs:element name="enregistrerAnnulationDecisionAccord" type="tns:enregistrerAnnulationDecisionAccord"/>
+  <xs:element name="enregistrerAnnulationDecisionAccordResponse" type="tns:enregistrerAnnulationDecisionAccordResponse"/>
+  <xs:element name="enregistrerClassementSansSuite" type="tns:enregistrerClassementSansSuite"/>
+  <xs:element name="enregistrerClassementSansSuiteResponse" type="tns:enregistrerClassementSansSuiteResponse"/>
+  <xs:element name="enregistrerDecisionAccord" type="tns:enregistrerDecisionAccord"/>
+  <xs:element name="enregistrerDecisionAccordResponse" type="tns:enregistrerDecisionAccordResponse"/>
+  <xs:element name="enregistrerNotification" type="tns:enregistrerNotification"/>
+  <xs:element name="enregistrerNotificationResponse" type="tns:enregistrerNotificationResponse"/>
+  <xs:element name="enregistrerOffreAcceptee" type="tns:enregistrerOffreAcceptee"/>
+  <xs:element name="enregistrerOffreAccepteeResponse" type="tns:enregistrerOffreAccepteeResponse"/>
+  <xs:element name="rechercherSousFondsCriteres" type="tns:rechercherSousFondsCriteres"/>
+  <xs:element name="rechercherSousFondsCriteresResponse" type="tns:rechercherSousFondsCriteresResponse"/>
+  <xs:complexType name="enregisterDiminutionAide">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitementKsp" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requeteTraitementKsp">
+    <xs:complexContent>
+      <xs:extension base="tns:requete">
+        <xs:sequence>
+          <xs:element name="codeProduitCommercial" type="xs:int" minOccurs="0"/>
+          <xs:element name="dateCreationEvt" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="dateEffetEvt" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="dateValidationEvt" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="montantIndus" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="montantVariationEngagement" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="numeroChronologiqueGlobaleCre" type="xs:string" minOccurs="0"/>
+          <xs:element name="numeroEvtSource" type="xs:int" minOccurs="0"/>
+          <xs:element name="referenceContrat" type="xs:string" minOccurs="0"/>
+          <xs:element name="referenceSousDossierCommercial" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="requete">
+    <xs:sequence>
+      <xs:element name="envoieLogo" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="referenceSousFond" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregisterDiminutionAideResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperationKsp" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="traitementOperationKsp">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="tns:codeRetour"/>
+      <xs:element name="requete" type="tns:requeteTraitementKsp"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="codeRetour">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConventionArgumentException">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="serviceFault" type="tns:conventionServiceFault" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="conventionServiceFault">
+    <xs:sequence>
+      <xs:element name="dataInput" type="xs:string" minOccurs="0"/>
+      <xs:element name="exceptionMessage" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultMessage" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConventionTechnicalException">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="serviceFault" type="tns:conventionServiceFault" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConventionAuthException">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="serviceFault" type="tns:conventionServiceFault" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregisterAnnulationAugmentationAide">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitementKsp" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregisterAnnulationAugmentationAideResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperationKsp" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregisterAugmentationAide">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitementKsp" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregisterAugmentationAideResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperationKsp" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregistrerAnnulationDecisionAccord">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitement" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requeteTraitement">
+    <xs:complexContent>
+      <xs:extension base="tns:requete">
+        <xs:sequence>
+          <xs:element name="codeProduitCommercial" type="xs:int" minOccurs="0"/>
+          <xs:element name="dateCreationEvt" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="dateValidationEvt" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="montant" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="numero" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="enregistrerAnnulationDecisionAccordResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="traitementOperation">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="tns:codeRetour"/>
+      <xs:element name="requete" type="tns:requeteTraitement"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rechercherSousFondsCriteres">
+    <xs:sequence>
+      <xs:element name="critere" type="tns:requeteRechercheSousFonds" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requeteRechercheSousFonds">
+    <xs:sequence>
+      <xs:element name="age" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="codeContexte" type="xs:long" minOccurs="0"/>
+      <xs:element name="codeMetier" type="xs:long" minOccurs="0"/>
+      <xs:element name="codeNAf" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeProduitCommercial" type="xs:int" minOccurs="0"/>
+      <xs:element name="codeTypeOperationInnovation" type="xs:long" minOccurs="0"/>
+      <xs:element name="codeTypeProgrammeInnovation" type="xs:long" minOccurs="0"/>
+      <xs:element name="codepostal" type="xs:string" minOccurs="0"/>
+      <xs:element name="cofinanceur" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="conventionNonGere" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="numera" type="xs:integer" minOccurs="0"/>
+      <xs:element name="numeroDossierCommercial" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rechercherSousFondsCriteresResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:listeSousFondsConvention" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listeSousFondsConvention">
+    <xs:sequence>
+      <xs:element name="resultatSousFondsConventions" type="tns:resultatSousFondsConvention" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultatSousFondsConvention">
+    <xs:complexContent>
+      <xs:extension base="tns:sousFonds">
+        <xs:sequence>
+          <xs:element name="codeRetour" type="tns:codeRetour" minOccurs="0"/>
+          <xs:element name="requeteRechercheSousFonds" type="tns:requeteRechercheSousFonds" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sousFonds">
+    <xs:sequence>
+      <xs:element name="capaciteEngagement" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="codeActif" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="codeMillesime" type="xs:int" minOccurs="0"/>
+      <xs:element name="codeProgramme" type="xs:int" minOccurs="0"/>
+      <xs:element name="codeStatut" type="xs:string" minOccurs="0"/>
+      <xs:element name="fonds" type="tns:fonds" minOccurs="0"/>
+      <xs:element name="idSousFonds" type="xs:string" minOccurs="0"/>
+      <xs:element name="libelleSousFonds" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroContexte" type="xs:long" minOccurs="0"/>
+      <xs:element name="numeroTypeOperation" type="xs:long" minOccurs="0"/>
+      <xs:element name="produits" type="tns:produit" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="referenceSousFond" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fonds">
+    <xs:sequence>
+      <xs:element name="convention" type="tns:convention" minOccurs="0"/>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="libelle" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="convention">
+    <xs:sequence>
+      <xs:element name="codeEntiteJuridique" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="libelle" type="xs:string" minOccurs="0"/>
+      <xs:element name="listeTiers" type="tns:tiers" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="listeVisas" type="tns:visas" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="logos" type="tns:logo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="numeroConcours" type="xs:short" minOccurs="0"/>
+      <xs:element name="variante" type="tns:variante" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tiers">
+    <xs:sequence>
+      <xs:element name="codeRoleTiers" type="xs:string" minOccurs="0"/>
+      <xs:element name="logo" type="tns:logo" minOccurs="0"/>
+      <xs:element name="numera" type="xs:integer" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="logo">
+    <xs:sequence>
+      <xs:element name="flux" type="swaRef:swaRef" minOccurs="0"/>
+      <xs:element name="idLogo" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="visas">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="indicateurVisaCroise" type="xs:boolean"/>
+      <xs:element name="libelle" type="xs:string" minOccurs="0"/>
+      <xs:element name="ordreEdition" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="variante">
+    <xs:sequence>
+      <xs:element name="codeOrigineResource" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="indicateurCalculESB" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="indicateurConditionParticuliere" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="indicateurEcheancier" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="libelle" type="xs:string" minOccurs="0"/>
+      <xs:element name="sousModele" type="tns:sousModele" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sousModele">
+    <xs:sequence>
+      <xs:element name="codeProgrammeInnovation" type="xs:long" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="libelle" type="xs:string" minOccurs="0"/>
+      <xs:element name="modele" type="tns:modele" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modele">
+    <xs:sequence>
+      <xs:element name="idModele" type="xs:long" minOccurs="0"/>
+      <xs:element name="libelle" type="xs:string" minOccurs="0"/>
+      <xs:element name="metier" type="tns:metier" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="metier">
+    <xs:sequence>
+      <xs:element name="codeMetier" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="produit">
+    <xs:sequence>
+      <xs:element name="codeProduit" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregistrerClassementSansSuite">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitementDossierSansSuite" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="requeteTraitementDossierSansSuite">
+    <xs:complexContent>
+      <xs:extension base="tns:requeteTraitement">
+        <xs:sequence>
+          <xs:element name="dossierClient" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="enregistrerClassementSansSuiteResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregistrerDecisionAccord">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitement" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregistrerDecisionAccordResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="demanderAutorisationAdossementSousFonds">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitement" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="demanderAutorisationAdossementSousFondsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consulterSousFondsParReferences">
+    <xs:sequence>
+      <xs:element name="requetes" type="tns:listeRequete" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listeRequete">
+    <xs:sequence>
+      <xs:element name="requeteList" type="tns:requete" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consulterSousFondsParReferencesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:listSousFonds" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listSousFonds">
+    <xs:sequence>
+      <xs:element name="sousFondsConvention" type="tns:sousFondsConvention" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sousFondsConvention">
+    <xs:complexContent>
+      <xs:extension base="tns:sousFonds">
+        <xs:sequence>
+          <xs:element name="codeRetour" type="tns:codeRetour" minOccurs="0"/>
+          <xs:element name="requete" type="tns:requete" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="consulterVisasSousFondsParReference">
+    <xs:sequence>
+      <xs:element name="requetes" type="tns:listeRequete" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consulterVisasSousFondsParReferenceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:listSousFonds" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregistrerNotification">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitement" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregistrerNotificationResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consulterBonificationDossierCommercialParReferences">
+    <xs:sequence>
+      <xs:element name="param" type="tns:sousDossierCommercialBonification" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sousDossierCommercialBonification">
+    <xs:sequence>
+      <xs:element name="numeroSousDossierCommercial" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consulterBonificationDossierCommercialParReferencesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:sousFondsBonification" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sousFondsBonification">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="tns:codeRetour" minOccurs="0"/>
+      <xs:element name="montant" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="raquete" type="tns:requete" minOccurs="0"/>
+      <xs:element name="referenseDossierCommercial" type="xs:int" minOccurs="0"/>
+      <xs:element name="tauxBonification" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregistrerOffreAcceptee">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitement" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregistrerOffreAccepteeResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consulterTiersSousFondsParReference">
+    <xs:sequence>
+      <xs:element name="requetes" type="tns:listeRequete" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consulterTiersSousFondsParReferenceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:listSousFonds" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregisterAnnulationDiminutionAide">
+    <xs:sequence>
+      <xs:element name="param" type="tns:requeteTraitementKsp" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enregisterAnnulationDiminutionAideResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:traitementOperationKsp" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

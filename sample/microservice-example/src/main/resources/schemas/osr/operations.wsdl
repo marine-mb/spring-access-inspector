@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Convention" targetNamespace="http://ws.services.ws.todo.acme.fr/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:tns="http://ws.services.ws.todo.acme.fr/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://ws.services.ws.todo.acme.fr/" schemaLocation="osr_schema.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="consulterBonificationDossierCommercialParReferences">
+    <part name="parameters" element="tns:consulterBonificationDossierCommercialParReferences"/>
+  </message>
+  <message name="enregistrerDecisionAccord">
+    <part name="parameters" element="tns:enregistrerDecisionAccord"/>
+  </message>
+  <message name="enregistrerNotification">
+    <part name="parameters" element="tns:enregistrerNotification"/>
+  </message>
+  <message name="enregistrerAnnulationDecisionAccord">
+    <part name="parameters" element="tns:enregistrerAnnulationDecisionAccord"/>
+  </message>
+  <message name="enregisterAnnulationDiminutionAide">
+    <part name="parameters" element="tns:enregisterAnnulationDiminutionAide"/>
+  </message>
+  <message name="ConventionTechnicalException">
+    <part name="fault" element="tns:ConventionTechnicalException"/>
+  </message>
+  <message name="enregistrerOffreAcceptee">
+    <part name="parameters" element="tns:enregistrerOffreAcceptee"/>
+  </message>
+  <message name="enregistrerNotificationResponse">
+    <part name="parameters" element="tns:enregistrerNotificationResponse"/>
+  </message>
+  <message name="consulterBonificationDossierCommercialParReferencesResponse">
+    <part name="parameters" element="tns:consulterBonificationDossierCommercialParReferencesResponse"/>
+  </message>
+  <message name="enregisterAugmentationAideResponse">
+    <part name="parameters" element="tns:enregisterAugmentationAideResponse"/>
+  </message>
+  <message name="enregisterAnnulationAugmentationAide">
+    <part name="parameters" element="tns:enregisterAnnulationAugmentationAide"/>
+  </message>
+  <message name="rechercherSousFondsCriteresResponse">
+    <part name="parameters" element="tns:rechercherSousFondsCriteresResponse"/>
+  </message>
+  <message name="enregistrerClassementSansSuite">
+    <part name="parameters" element="tns:enregistrerClassementSansSuite"/>
+  </message>
+  <message name="consulterTiersSousFondsParReferenceResponse">
+    <part name="parameters" element="tns:consulterTiersSousFondsParReferenceResponse"/>
+  </message>
+  <message name="enregistrerClassementSansSuiteResponse">
+    <part name="parameters" element="tns:enregistrerClassementSansSuiteResponse"/>
+  </message>
+  <message name="enregisterDiminutionAide">
+    <part name="parameters" element="tns:enregisterDiminutionAide"/>
+  </message>
+  <message name="consulterSousFondsParReferencesResponse">
+    <part name="parameters" element="tns:consulterSousFondsParReferencesResponse"/>
+  </message>
+  <message name="consulterVisasSousFondsParReference">
+    <part name="parameters" element="tns:consulterVisasSousFondsParReference"/>
+  </message>
+  <message name="enregisterAugmentationAide">
+    <part name="parameters" element="tns:enregisterAugmentationAide"/>
+  </message>
+  <message name="ConventionArgumentException">
+    <part name="fault" element="tns:ArgumentExceptionFault"/>
+  </message>
+  <message name="consulterTiersSousFondsParReference">
+    <part name="parameters" element="tns:consulterTiersSousFondsParReference"/>
+  </message>
+  <message name="rechercherSousFondsCriteres">
+    <part name="parameters" element="tns:rechercherSousFondsCriteres"/>
+  </message>
+  <message name="enregisterAnnulationAugmentationAideResponse">
+    <part name="parameters" element="tns:enregisterAnnulationAugmentationAideResponse"/>
+  </message>
+  <message name="demanderAutorisationAdossementSousFonds">
+    <part name="parameters" element="tns:demanderAutorisationAdossementSousFonds"/>
+  </message>
+  <message name="ConventionAuthException">
+    <part name="fault" element="tns:ConventionAuthException"/>
+  </message>
+  <message name="enregistrerDecisionAccordResponse">
+    <part name="parameters" element="tns:enregistrerDecisionAccordResponse"/>
+  </message>
+  <message name="enregistrerAnnulationDecisionAccordResponse">
+    <part name="parameters" element="tns:enregistrerAnnulationDecisionAccordResponse"/>
+  </message>
+  <message name="demanderAutorisationAdossementSousFondsResponse">
+    <part name="parameters" element="tns:demanderAutorisationAdossementSousFondsResponse"/>
+  </message>
+  <message name="consulterSousFondsParReferences">
+    <part name="parameters" element="tns:consulterSousFondsParReferences"/>
+  </message>
+  <message name="enregisterDiminutionAideResponse">
+    <part name="parameters" element="tns:enregisterDiminutionAideResponse"/>
+  </message>
+  <message name="enregisterAnnulationDiminutionAideResponse">
+    <part name="parameters" element="tns:enregisterAnnulationDiminutionAideResponse"/>
+  </message>
+  <message name="enregistrerOffreAccepteeResponse">
+    <part name="parameters" element="tns:enregistrerOffreAccepteeResponse"/>
+  </message>
+  <message name="consulterVisasSousFondsParReferenceResponse">
+    <part name="parameters" element="tns:consulterVisasSousFondsParReferenceResponse"/>
+  </message>
+  <portType name="WebServiceConventionImpl">
+    <operation name="consulterSousFondsParReferences">
+      <input message="tns:consulterSousFondsParReferences" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterSousFondsParReferencesRequest"/>
+      <output message="tns:consulterSousFondsParReferencesResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterSousFondsParReferencesResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterSousFondsParReferences/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterSousFondsParReferences/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterSousFondsParReferences/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="consulterTiersSousFondsParReference">
+      <input message="tns:consulterTiersSousFondsParReference" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterTiersSousFondsParReferenceRequest"/>
+      <output message="tns:consulterTiersSousFondsParReferenceResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterTiersSousFondsParReferenceResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterTiersSousFondsParReference/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterTiersSousFondsParReference/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterTiersSousFondsParReference/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="consulterVisasSousFondsParReference">
+      <input message="tns:consulterVisasSousFondsParReference" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterVisasSousFondsParReferenceRequest"/>
+      <output message="tns:consulterVisasSousFondsParReferenceResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterVisasSousFondsParReferenceResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterVisasSousFondsParReference/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterVisasSousFondsParReference/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterVisasSousFondsParReference/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="rechercherSousFondsCriteres">
+      <input message="tns:rechercherSousFondsCriteres" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/rechercherSousFondsCriteresRequest"/>
+      <output message="tns:rechercherSousFondsCriteresResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/rechercherSousFondsCriteresResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/rechercherSousFondsCriteres/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/rechercherSousFondsCriteres/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/rechercherSousFondsCriteres/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="demanderAutorisationAdossementSousFonds">
+      <input message="tns:demanderAutorisationAdossementSousFonds" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/demanderAutorisationAdossementSousFondsRequest"/>
+      <output message="tns:demanderAutorisationAdossementSousFondsResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/demanderAutorisationAdossementSousFondsResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/demanderAutorisationAdossementSousFonds/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/demanderAutorisationAdossementSousFonds/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/demanderAutorisationAdossementSousFonds/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregistrerDecisionAccord">
+      <input message="tns:enregistrerDecisionAccord" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerDecisionAccordRequest"/>
+      <output message="tns:enregistrerDecisionAccordResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerDecisionAccordResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerDecisionAccord/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerDecisionAccord/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerDecisionAccord/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregistrerNotification">
+      <input message="tns:enregistrerNotification" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerNotificationRequest"/>
+      <output message="tns:enregistrerNotificationResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerNotificationResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerNotification/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerNotification/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerNotification/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregistrerAnnulationDecisionAccord">
+      <input message="tns:enregistrerAnnulationDecisionAccord" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerAnnulationDecisionAccordRequest"/>
+      <output message="tns:enregistrerAnnulationDecisionAccordResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerAnnulationDecisionAccordResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerAnnulationDecisionAccord/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerAnnulationDecisionAccord/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerAnnulationDecisionAccord/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="consulterBonificationDossierCommercialParReferences">
+      <input message="tns:consulterBonificationDossierCommercialParReferences" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterBonificationDossierCommercialParReferencesRequest"/>
+      <output message="tns:consulterBonificationDossierCommercialParReferencesResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterBonificationDossierCommercialParReferencesResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterBonificationDossierCommercialParReferences/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterBonificationDossierCommercialParReferences/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/consulterBonificationDossierCommercialParReferences/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregistrerOffreAcceptee">
+      <input message="tns:enregistrerOffreAcceptee" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerOffreAccepteeRequest"/>
+      <output message="tns:enregistrerOffreAccepteeResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerOffreAccepteeResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerOffreAcceptee/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerOffreAcceptee/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerOffreAcceptee/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregistrerClassementSansSuite">
+      <input message="tns:enregistrerClassementSansSuite" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerClassementSansSuiteRequest"/>
+      <output message="tns:enregistrerClassementSansSuiteResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerClassementSansSuiteResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerClassementSansSuite/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerClassementSansSuite/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregistrerClassementSansSuite/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregisterDiminutionAide">
+      <input message="tns:enregisterDiminutionAide" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterDiminutionAideRequest"/>
+      <output message="tns:enregisterDiminutionAideResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterDiminutionAideResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterDiminutionAide/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterDiminutionAide/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterDiminutionAide/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregisterAnnulationDiminutionAide">
+      <input message="tns:enregisterAnnulationDiminutionAide" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationDiminutionAideRequest"/>
+      <output message="tns:enregisterAnnulationDiminutionAideResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationDiminutionAideResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationDiminutionAide/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationDiminutionAide/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationDiminutionAide/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregisterAugmentationAide">
+      <input message="tns:enregisterAugmentationAide" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAugmentationAideRequest"/>
+      <output message="tns:enregisterAugmentationAideResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAugmentationAideResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAugmentationAide/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAugmentationAide/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAugmentationAide/Fault/ConventionAuthException"/>
+    </operation>
+    <operation name="enregisterAnnulationAugmentationAide">
+      <input message="tns:enregisterAnnulationAugmentationAide" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationAugmentationAideRequest"/>
+      <output message="tns:enregisterAnnulationAugmentationAideResponse" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationAugmentationAideResponse"/>
+      <fault name="ConventionTechnicalException" message="tns:ConventionTechnicalException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationAugmentationAide/Fault/ConventionTechnicalException"/>
+      <fault name="ConventionArgumentException" message="tns:ConventionArgumentException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationAugmentationAide/Fault/ConventionArgumentException"/>
+      <fault name="ConventionAuthException" message="tns:ConventionAuthException" wsam:Action="http://ws.services.ws.todo.acme.fr/WebServiceConventionImpl/enregisterAnnulationAugmentationAide/Fault/ConventionAuthException"/>
+    </operation>
+  </portType>
+  <binding name="WebServiceConvention_V1Binding" type="tns:WebServiceConventionImpl">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="consulterSousFondsParReferences">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="consulterTiersSousFondsParReference">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="consulterVisasSousFondsParReference">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="rechercherSousFondsCriteres">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="demanderAutorisationAdossementSousFonds">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregistrerDecisionAccord">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregistrerNotification">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregistrerAnnulationDecisionAccord">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="consulterBonificationDossierCommercialParReferences">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregistrerOffreAcceptee">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregistrerClassementSansSuite">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregisterDiminutionAide">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregisterAnnulationDiminutionAide">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregisterAugmentationAide">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="enregisterAnnulationAugmentationAide">
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+      <fault name="ConventionTechnicalException">
+        <soap12:fault name="ConventionTechnicalException" use="literal"/>
+      </fault>
+      <fault name="ConventionArgumentException">
+        <soap12:fault name="ConventionArgumentException" use="literal"/>
+      </fault>
+      <fault name="ConventionAuthException">
+        <soap12:fault name="ConventionAuthException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="Convention">
+    <port name="WebServiceConvention_V1" binding="tns:WebServiceConvention_V1Binding">
+      <soap12:address location="http://ihs90-moa2-ws-01.cepme150.fr:20420/osr-ws/v1/Convention"/>
+    </port>
+  </service>
+</definitions>
