@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: microservice-A-sample
