@@ -1,5 +1,6 @@
 package com.theodo.ms.controller;
 
+import jakarta.annotation.security.RolesAllowed;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,8 +8,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("webclient")
 @RequiredArgsConstructor
 public class CarsController {
+    public static final String ADMIN = "ROLE_ADMIN";
+    public static final String USER = "ROLE_USER";
 
     @PostMapping({ "/v1/cars" })
+    @RolesAllowed({ ADMIN })
     public String postSomething() {
         return "OK";
     }
@@ -19,17 +23,8 @@ public class CarsController {
     }
 
     @GetMapping({ "/v3/cars/{carsId}/details" })
+    @RolesAllowed({ USER, ADMIN })
     public String getSomething(@PathVariable String carsId) {
         return "OK: %s".formatted(carsId);
-    }
-
-    @GetMapping(path = "/v4/cars/{carsId}/{info}")
-    public String getSomething(@PathVariable String carsId, @PathVariable Integer info) {
-        return "OK: %s %s".formatted(carsId, info);
-    }
-
-    @PatchMapping(path = "/v5/cars")
-    public String patchAllCars() {
-        return "OK";
     }
 }
