@@ -26,6 +26,13 @@
     </properties>
 
     <dependencies>
+        <!-- Security Annotations -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Web application -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -44,6 +51,8 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
+
 
     <build>
         <plugins>
