@@ -2,7 +2,9 @@ package com.theodo.ms.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.UtilityClass;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,10 +13,17 @@ import static com.theodo.ms.controller.TreesController.Config.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(PATH)
+@PreAuthorize("hasRole(ADMIN)")
 public class TreesController {
 
     @PostMapping()
     public String postSomething() {
+        return "OK";
+    }
+
+    @GetMapping()
+    @PreAuthorize("hasRole(ADMIN)")
+    public String getSomething() {
         return "OK";
     }
 
