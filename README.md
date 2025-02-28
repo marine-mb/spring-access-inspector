@@ -1,3 +1,7 @@
+## Requirements
+
+This project uses java 17
+
 ## What is spring-access-control ?
 
 This tool creates a table report to verify access control on Spring Boot routes.
