@@ -1,0 +1,40 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>        <!-- To add color in logs: https://logback.qos.ch/manual/layouts.html#coloring -->
+        <encoder>
+            <pattern>%boldGreen(%d{HH:mm:ss.SSS}) %highlight(%-5level) %boldYellow([%thread]) %cyan(%logger{0}) - %msg %rEx{full,java.lang.reflect.Method,
+                org.apache.catalina,
+                org.junit.platform,
+                org.junit.jupiter,
+                org.apache.tomcat,
+                org.apache.coyote,
+                org.eclipse.jetty,
+                javax,
+                java.util.concurrent,
+                java.lang.Thread,
+                org.springframework.aop,
+                org.springframework.boot.actuate,
+                org.springframework.boot.test,
+                org.springframework.security,
+                org.springframework.transaction,
+                org.springframework.test,
+                org.springframework.web,
+                org.springframework.mock,
+                org.springframework.cglib,
+                org.apache.maven,
+                sun.reflect,
+                net.sf.cglib,
+                java.base,
+                CGLIB,
+                com.zaxxer.hikari.pool
+                }%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <root level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <logger name="com.gmi" level="WARN"/>
+</configuration>
