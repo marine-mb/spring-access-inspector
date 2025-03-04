@@ -1,4 +1,4 @@
-package com.theodo.tools.preauthorize.analyzer.impl.ast;
+package com.theodo.inspector.impl.ast;
 
 import java.io.File;
 

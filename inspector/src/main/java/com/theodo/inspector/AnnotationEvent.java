@@ -1,4 +1,4 @@
-package com.theodo.tools.preauthorize.analyzer;
+package com.theodo.inspector;
 
 public interface AnnotationEvent {
     void foundErroneousAnnotation(String sourceLocation);

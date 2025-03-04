@@ -1,4 +1,4 @@
-package com.theodo.tools.preauthorize.analyzer.impl.utils;
+package com.theodo.inspector.impl.utils;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
