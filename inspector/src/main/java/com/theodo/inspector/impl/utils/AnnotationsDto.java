@@ -1,4 +1,4 @@
-package com.theodo.tools.preauthorize.analyzer.impl.utils;
+package com.theodo.inspector.impl.utils;
 
 public class AnnotationsDto {
     String endpoint;

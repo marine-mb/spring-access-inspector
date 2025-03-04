@@ -1,6 +1,6 @@
 ## Requirements
 
-This project uses java 17
+This project uses java 21
 
 ## What is spring-access-control ?
 
