@@ -14,4 +14,10 @@ public class HousesController {
         return "OK";
     }
 
+    @GetMapping({ "/houses/v1/house" })
+    @PreAuthorize("isAuthenticated()")
+    public String getSomething() {
+        return "OK";
+    }
+
 }
