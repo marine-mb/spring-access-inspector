@@ -30,6 +30,10 @@ public class SpringAccessInspector extends InspectorCommand implements Annotatio
     @Getter
     private int errorCount = 0;
 
+    public void setProjectDirectory(String projectDirectory) {
+        this.projectDirectory = projectDirectory;
+    }
+
     public static void main(String[] args) {
         Configurator.setLevel("com.theodo.tools", Level.INFO);
 
@@ -38,8 +42,7 @@ public class SpringAccessInspector extends InspectorCommand implements Annotatio
         log.info("Process ended with exit code: {}", exitCode);
     }
 
-    @Override
-    public Integer call() throws Exception {
+    public List<AnnotationDto> analyzer() throws IOException {
         try (Stream<File> walk = findPoms(projectDirectory)) { // For all maven projects found in directory
             List<AnnotationDto> annotations = new ArrayList<>();
             walk.forEach(pomFile -> {
@@ -49,8 +52,14 @@ public class SpringAccessInspector extends InspectorCommand implements Annotatio
                 annotations.addAll(temporaryAnnotation);
 
             });
-            generateHtmlTable(annotations);
+            return annotations;
         }
+    }
+
+    @Override
+    public Integer call() throws Exception {
+        List<AnnotationDto> annotations = analyzer();
+        generateHtmlTable(annotations);
         return 0;
     }
 
