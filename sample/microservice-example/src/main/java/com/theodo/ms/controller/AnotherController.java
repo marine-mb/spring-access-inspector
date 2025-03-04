@@ -31,7 +31,7 @@ public class AnotherController {
     }
 
     @RequestMapping(value = "{projectId}" + AnotherController.Config.MODIFY, method = RequestMethod.PATCH)
-    public String pathSomething(@PathVariable String projectId) {
+    public String patchSomething(@PathVariable String projectId) {
         return "OK: %s".formatted(projectId);
     }
 
