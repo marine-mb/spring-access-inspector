@@ -17,7 +17,7 @@ import org.apache.logging.log4j.core.config.Configurator;
 import com.theodo.inspector.cli.InspectorCommand;
 import com.theodo.inspector.impl.PreAuthorizeAnnotationProcessing;
 import com.theodo.inspector.impl.ast.ASTReader;
-import com.theodo.inspector.impl.utils.AnnotationsDto;
+import com.theodo.inspector.impl.utils.AnnotationDto;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +30,10 @@ public class SpringAccessInspector extends InspectorCommand implements Annotatio
     @Getter
     private int errorCount = 0;
 
+    public void setProjectDirectory(String projectDirectory) {
+        this.projectDirectory = projectDirectory;
+    }
+
     public static void main(String[] args) {
         Configurator.setLevel("com.theodo.tools", Level.INFO);
 
@@ -38,23 +42,29 @@ public class SpringAccessInspector extends InspectorCommand implements Annotatio
         log.info("Process ended with exit code: {}", exitCode);
     }
 
-    @Override
-    public Integer call() throws Exception {
+    public List<AnnotationDto> analyzer() throws IOException {
         try (Stream<File> walk = findPoms(projectDirectory)) { // For all maven projects found in directory
-            List<AnnotationsDto> annotations = new ArrayList<>();
+            List<AnnotationDto> annotations = new ArrayList<>();
             walk.forEach(pomFile -> {
                 CtModel astModel = ASTReader.readAst(pomFile); // Analyze JAVA AST
-                List<AnnotationsDto> temporaryAnnotation = PreAuthorizeAnnotationProcessing
+                List<AnnotationDto> temporaryAnnotation = PreAuthorizeAnnotationProcessing
                         .visitAllAnnotations(astModel, this);
                 annotations.addAll(temporaryAnnotation);
 
             });
-            generateHtmlTable(annotations);
+            return annotations;
         }
+    }
+
+    @Override
+    public Integer call() throws Exception {
+        List<AnnotationDto> annotations = analyzer();
+        generateHtmlTable(annotations);
         return 0;
     }
 
-    public void generateHtmlTable(List<AnnotationsDto> annotations) {
+    public void generateHtmlTable(List<AnnotationDto> annotations) {
+
         // Generate the HTML table
         StringBuilder htmlTable = new StringBuilder();
         htmlTable.append("\n<head>\n<style>\n")
@@ -65,7 +75,7 @@ public class SpringAccessInspector extends InspectorCommand implements Annotatio
                 .append("<table>\n<tr {}>\n<th>Endpoint</th>\n<th>Method</th>\n<th>PreAuthorize</th>\n</tr>\n");
 
         // Iterate over the list and generate each row of the table
-        for (AnnotationsDto annotation : annotations) {
+        for (AnnotationDto annotation : annotations) {
             htmlTable.append("<tr>\n<td>").append(annotation.endpoint()).append("</td>\n")
                     .append("<td>").append(annotation.method().replace("Mapping", "")).append("</td>\n")
                     .append("<td>").append(annotation.preAuthorize()).append("</td>\n</tr>\n");

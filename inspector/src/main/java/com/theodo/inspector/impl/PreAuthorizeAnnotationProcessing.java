@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.theodo.inspector.AnnotationEvent;
-import com.theodo.inspector.impl.utils.AnnotationsDto;
+import com.theodo.inspector.impl.utils.AnnotationDto;
 import com.theodo.inspector.impl.utils.LiteralExtraction;
 import com.theodo.inspector.impl.utils.SourceLocation;
 
@@ -24,14 +24,14 @@ import spoon.reflect.visitor.filter.TypeFilter;
 
 @Slf4j
 public class PreAuthorizeAnnotationProcessing {
-    public static List<AnnotationsDto> visitAllAnnotations(CtModel astModel, AnnotationEvent annotationEvent) {
-        List<AnnotationsDto> annotations = new ArrayList<>();
+    public static List<AnnotationDto> visitAllAnnotations(CtModel astModel, AnnotationEvent annotationEvent) {
+        List<AnnotationDto> annotations = new ArrayList<>();
 
         ControllerEndpointDiscovery.analyzeControllers(astModel.getRootPackage(),
                 (ctClass, ctMethod, verb, path) -> {
 
                     String preAuthorize = analyzePreAuthorize(ctClass, ctMethod, annotationEvent);
-                    AnnotationsDto annotation = new AnnotationsDto(path, verb, preAuthorize);
+                    AnnotationDto annotation = new AnnotationDto(path, verb, preAuthorize);
                     annotations.add(annotation);
 
                     log.info(

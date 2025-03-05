@@ -1,11 +1,11 @@
 package com.theodo.inspector.impl.utils;
 
-public class AnnotationsDto {
+public class AnnotationDto {
     String endpoint;
     String method;
     String preAuthorize;
 
-    public AnnotationsDto(String endpoint, String method, String preAuthorize) {
+    public AnnotationDto(String endpoint, String method, String preAuthorize) {
         this.endpoint = endpoint;
         this.method = method;
         this.preAuthorize = preAuthorize;
