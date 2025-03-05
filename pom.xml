@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.theodo</groupId>
+    <version>1.0.0</version>
+    <artifactId>spring-access-inspector-aggregate</artifactId>
+    <packaging>pom</packaging>
+
+    <name>spring-access-inspector-aggregate</name>
+    <description>Aggregation project that contains tests projects and inspector projects</description>
+
+    <profiles>
+        <profile>
+            <id>fake-projects</id>
+            <modules>
+                <module>sample/microservice-example</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>plugin</id>
+            <modules>
+                <module>inspector</module>
+                <module>inspector-maven-plugin</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>all</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <!-- Fake projects for tests purposes -->
+                <module>sample/microservice-example</module>
+
+                <!-- Real Inspector code and Maven MOJO wrapper -->
+                <module>inspector</module>
+                <module>inspector-maven-plugin</module>
+            </modules>
+        </profile>
+    </profiles>
+
+</project>
