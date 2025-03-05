@@ -17,4 +17,10 @@
 .kubeconfig
 .aws/credentials
 .vscode/*
+*/.vscode/*
 target
+
+*/spoon.classpath.tmp
+spoon.classpath.tmp
+*.html
+/*.html
