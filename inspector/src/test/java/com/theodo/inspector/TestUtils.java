@@ -1,14 +1,14 @@
-package com.theodo.tools.preauthorize.analyzer;
+package com.theodo.inspector;
 
 import java.io.File;
 
 public class TestUtils {
     public static String getConfigLocation(String currentDirectory) {
-        return getFileInDir(currentDirectory, "analyzer", "log4j.xml");
+        return getFileInDir(currentDirectory, "inspector", "log4j.xml");
     }
 
     public static File getDirectory(String currentDirectory, String targetDir) {
-        if (currentDirectory.contains("/analyzer")) {
+        if (currentDirectory.contains("/inspector")) {
             File currentDir = new File(currentDirectory);
             File rootDir = currentDir.getParentFile(); // root project directory
             return new File(rootDir, targetDir);

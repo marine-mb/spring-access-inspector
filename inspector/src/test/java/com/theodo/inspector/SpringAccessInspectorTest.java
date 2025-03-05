@@ -1,4 +1,4 @@
-package com.theodo.tools.preauthorize.analyzer;
+package com.theodo.inspector;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,19 +9,22 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.theodo.tools.preauthorize.analyzer.impl.utils.AnnotationDto;
+import com.theodo.inspector.impl.utils.AnnotationDto;
 
-class PreAuthorizeAnalysisTest extends UnitTest {
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+class SpringAccessInspectorTest extends UnitTest {
     private static List<AnnotationDto> annotations;
 
     @BeforeAll
     static void setupProjects() {
         try {
-            PreAuthorizeAnalysis analysis = new PreAuthorizeAnalysis();
-            analysis.setProjectDirectory("sample/microservice-example");
+            SpringAccessInspector analysis = new SpringAccessInspector();
+            analysis.setProjectDirectory(sampleProjectRootPath);
             annotations = analysis.analyzer();
         } catch (Exception e) {
-            System.out.println("Error while analyzing project");
+            log.info("Error while analyzing project");
             e.printStackTrace();
         }
 
