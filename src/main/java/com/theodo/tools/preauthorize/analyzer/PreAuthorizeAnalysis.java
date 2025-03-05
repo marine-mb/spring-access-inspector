@@ -43,8 +43,7 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
         log.info("Process ended with exit code: {}", exitCode);
     }
 
-    @Override
-    public Integer call() throws Exception {
+    public List<AnnotationDto> analyzer() throws IOException {
         try (Stream<File> walk = findPoms(projectDirectory)) { // For all maven projects found in directory
             List<AnnotationDto> annotations = new ArrayList<>();
             walk.forEach(pomFile -> {
@@ -54,8 +53,14 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
                 annotations.addAll(temporaryAnnotation);
 
             });
-            generateHtmlTable(annotations);
+            return annotations;
         }
+    }
+
+    @Override
+    public Integer call() throws Exception {
+        List<AnnotationDto> annotations = analyzer();
+        generateHtmlTable(annotations);
         return 0;
     }
 
