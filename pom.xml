@@ -14,17 +14,6 @@
     <name>spring-access-inspector-aggregate</name>
     <description>Aggregation project that contains tests projects and inspector projects</description>
 
-    <!-- <distributionManagement>
-      <repository>
-        <id>releases</id>
-        <url>https://artifactory.laforge.cloud.bpifrance.fr/artifactory/brc-maven-release</url>
-      </repository>
-      <snapshotRepository>
-        <id>snapshots</id>
-        <url>https://artifactory.laforge.cloud.bpifrance.fr/artifactory/brc-maven-snapshot</url>
-      </snapshotRepository>
-    </distributionManagement> -->
-
     <profiles>
         <profile>
             <id>fake-projects</id>
