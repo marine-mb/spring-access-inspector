@@ -1,116 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.theodo</groupId>
-    <artifactId>preauthorize-analysis</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <artifactId>spring-access-inspector-aggregate</artifactId>
+    <packaging>pom</packaging>
 
-    <name>preauthorize-analysis</name>
-    <description>Use Spoon AST analysis to discover and analyse @PreAuthorize annotations</description>
+    <name>spring-access-inspector-aggregate</name>
+    <description>Aggregation project that contains tests projects and inspector projects</description>
 
-    <properties>
-        <java.version>17</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
-        <spoon.version>10.3.0-beta-14</spoon.version> <!-- See release value at http://spoon.gforge.inria.fr/ -->
-        <lombok.version>1.18.24</lombok.version>
-        <picoli.version>4.7.1</picoli.version>
+    <profiles>
+        <profile>
+            <id>fake-projects</id>
+            <modules>
+                <module>sample/microservice-example</module>
+            </modules>
+        </profile>
 
-        <junit.version>4.13.2</junit.version>
-        <junit-jupiter.version>5.9.2</junit-jupiter.version>
-        <mockito.version>4.5.1</mockito.version>
-    </properties>
+        <profile>
+            <id>plugin</id>
+            <modules>
+                <module>inspector</module>
+                <module>inspector-maven-plugin</module>
+            </modules>
+        </profile>
 
-    <dependencies>
-        <!-- Needed to read POM files and JAR classes -->
-        <dependency>
-            <groupId>fr.inria.gforge.spoon</groupId>
-            <artifactId>spoon-core</artifactId>
-            <version>${spoon.version}</version>
-        </dependency>
+        <profile>
+            <id>all</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <!-- Fake projects for tests purposes -->
+                <module>sample/microservice-example</module>
 
-        <!-- LOGGING -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.19.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.19.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.19.0</version>
-        </dependency>
-        <!-- Needed to read CLI arguments -->
-        <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli</artifactId>
-            <version>${picoli.version}</version>
-        </dependency>
-        <!-- Dev tools -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>3.3.0</version>
-        </dependency>
-
-        <!-- TESTS -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-              <groupId>org.mockito</groupId>
-              <artifactId>mockito-core</artifactId>
-              <version>${mockito.version}</version>
-              <scope>test</scope>
-          </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
-
-                </configuration>
-            </plugin>
-        </plugins>
-
-    </build>
+                <!-- Real Inspector code and Maven MOJO wrapper -->
+                <module>inspector</module>
+                <module>inspector-maven-plugin</module>
+            </modules>
+        </profile>
+    </profiles>
 
 </project>
