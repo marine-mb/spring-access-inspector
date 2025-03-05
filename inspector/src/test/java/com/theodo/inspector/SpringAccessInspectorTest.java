@@ -9,8 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.theodo.tools.preauthorize.analyzer.PreAuthorizeAnalysis;
-import com.theodo.tools.preauthorize.analyzer.impl.utils.AnnotationDto;
+import com.theodo.inspector.impl.utils.AnnotationDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +20,7 @@ class SpringAccessInspectorTest extends UnitTest {
     @BeforeAll
     static void setupProjects() {
         try {
-            PreAuthorizeAnalysis analysis = new PreAuthorizeAnalysis();
+            SpringAccessInspector analysis = new SpringAccessInspector();
             analysis.setProjectDirectory(sampleProjectRootPath);
             annotations = analysis.analyzer();
         } catch (Exception e) {
