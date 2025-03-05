@@ -32,6 +32,10 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
     @Getter
     private int errorCount = 0;
 
+    public void setProjectDirectory(String projectDirectory) {
+        this.projectDirectory = projectDirectory;
+    }
+
     public static void main(String[] args) {
         Configurator.setLevel("com.theodo.tools", Level.INFO);
         PreAuthorizeAnalysis analyzer = new PreAuthorizeAnalysis();
