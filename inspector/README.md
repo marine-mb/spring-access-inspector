@@ -21,11 +21,11 @@ Go inside the repo:
 
 Compile the code:
 
-`mvn compile exec:java -Dexec.mainClass=com.theodo.tools.preauthorize.analyzer.PreAuthorizeAnalysis`
+`mvn compile exec:java -Dexec.mainClass=com.theodo.inspector.PreAuthorizeAnalysis`
 
 Run the code (using maven exec plugin) and give it your pom path:
 
-`mvn exec:java -Dexec.mainClass=com.theodo.tools.preauthorize.analyzer.PreAuthorizeAnalysis  -Dexec.args="/the_path/where/poms/are"`
+`mvn exec:java -Dexec.mainClass=com.theodo.inspector.PreAuthorizeAnalysis  -Dexec.args="/the_path/where/poms/are"`
 
 N.B: Compile your code before:
 

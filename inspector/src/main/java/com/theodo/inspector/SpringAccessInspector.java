@@ -1,4 +1,4 @@
-package com.theodo.tools.preauthorize.analyzer;
+package com.theodo.inspector;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,15 +9,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.stream.Stream;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 
-import com.theodo.tools.preauthorize.analyzer.impl.PreAuthorizeAnnotationProcessing;
-import com.theodo.tools.preauthorize.analyzer.impl.ast.ASTReader;
-import com.theodo.tools.preauthorize.analyzer.impl.utils.AnnotationDto;
+import com.theodo.inspector.cli.InspectorCommand;
+import com.theodo.inspector.impl.PreAuthorizeAnnotationProcessing;
+import com.theodo.inspector.impl.ast.ASTReader;
+import com.theodo.inspector.impl.utils.AnnotationDto;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -25,10 +25,7 @@ import picocli.CommandLine;
 import spoon.reflect.CtModel;
 
 @Slf4j
-public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent {
-    @CommandLine.Parameters(paramLabel = "PROJECT_DIR", description = "Root project Directory (project to analyze)", defaultValue = ".", index = "0")
-    protected String projectDirectory;
-
+public class SpringAccessInspector extends InspectorCommand implements AnnotationEvent {
     @Getter
     private int errorCount = 0;
 
@@ -38,8 +35,9 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
 
     public static void main(String[] args) {
         Configurator.setLevel("com.theodo.tools", Level.INFO);
-        PreAuthorizeAnalysis analyzer = new PreAuthorizeAnalysis();
-        int exitCode = new CommandLine(analyzer).execute(args);
+        
+        SpringAccessInspector inspector = new SpringAccessInspector();
+        int exitCode = new CommandLine(inspector).execute(args);
         log.info("Process ended with exit code: {}", exitCode);
     }
 
@@ -64,7 +62,7 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
         return 0;
     }
 
-    public static void generateHtmlTable(List<AnnotationDto> annotations) {
+    public void generateHtmlTable(List<AnnotationDto> annotations) {
         // Generate the HTML table
         StringBuilder htmlTable = new StringBuilder();
         htmlTable.append("\n<head>\n<style>\n")
@@ -85,7 +83,7 @@ public class PreAuthorizeAnalysis implements Callable<Integer>, AnnotationEvent 
         htmlTable.append("</table>\n</body>\n</html>");
 
         // Write the HTML table to a file
-        try (PrintWriter writer = new PrintWriter("table.html")) {
+        try (PrintWriter writer = new PrintWriter(this.htmlOutputFile)) {
             writer.println(htmlTable);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

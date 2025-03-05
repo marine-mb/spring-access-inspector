@@ -1,7 +1,7 @@
-package com.theodo.tools.preauthorize.analyzer.impl;
+package com.theodo.inspector.impl;
 
-import com.theodo.tools.preauthorize.analyzer.impl.utils.LiteralExtraction;
-import com.theodo.tools.preauthorize.analyzer.impl.utils.UriNormalizer;
+import com.theodo.inspector.impl.utils.LiteralExtraction;
+import com.theodo.inspector.impl.utils.UriNormalizer;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtAnnotation;
 import spoon.reflect.declaration.CtClass;
@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.theodo.tools.preauthorize.analyzer.impl.utils.AnnotationHelpers.getAllAnnotationsForMethod;
+import static com.theodo.inspector.impl.utils.AnnotationHelpers.getAllAnnotationsForMethod;
 
 public class ControllerEndpointDiscovery {
     private static final Set<String> POSSIBLE_CLASS_CONTEXT =

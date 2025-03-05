@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.theodo</groupId>
-    <artifactId>preauthorize-analysis</artifactId>
+    <artifactId>inspector</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>preauthorize-analysis</name>
+    <name>inspector</name>
     <description>Use Spoon AST analysis to discover and analyse @PreAuthorize annotations</description>
 
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
-        <spoon.version>10.3.0-beta-14</spoon.version> <!-- See release value at http://spoon.gforge.inria.fr/ -->
+        <spoon.version>10.3.0-beta-14</spoon.version> <!-- See release value at
+        http://spoon.gforge.inria.fr/ -->
         <lombok.version>1.18.24</lombok.version>
         <picoli.version>4.7.1</picoli.version>
 

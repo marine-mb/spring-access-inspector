@@ -1,13 +1,13 @@
-package com.theodo.tools.preauthorize.analyzer.impl;
+package com.theodo.inspector.impl;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.theodo.tools.preauthorize.analyzer.AnnotationEvent;
-import com.theodo.tools.preauthorize.analyzer.impl.utils.AnnotationDto;
-import com.theodo.tools.preauthorize.analyzer.impl.utils.LiteralExtraction;
-import com.theodo.tools.preauthorize.analyzer.impl.utils.SourceLocation;
+import com.theodo.inspector.AnnotationEvent;
+import com.theodo.inspector.impl.utils.AnnotationDto;
+import com.theodo.inspector.impl.utils.LiteralExtraction;
+import com.theodo.inspector.impl.utils.SourceLocation;
 
 import lombok.extern.slf4j.Slf4j;
 import spoon.reflect.CtModel;

@@ -1,4 +1,4 @@
-package com.theodo.tools.preauthorize.analyzer.impl;
+package com.theodo.inspector.impl;
 
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
